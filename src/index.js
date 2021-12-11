@@ -1,11 +1,13 @@
 
 require('./models/QRdata');
 const express = require('express');
+var cors = require('cors')
 const mongoose = require('mongoose');
 const QRdataRoutes = require('./routes/QRRoutes');
 
 
 const app = express();
+app.use(cors());
 app.use(express.json())
 app.use("/show",QRdataRoutes)
 
