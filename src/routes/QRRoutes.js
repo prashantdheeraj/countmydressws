@@ -77,7 +77,7 @@ router.put("/:id", async (req,res) => {
     return res.send({QRdataforUuid});
      
   } catch (error) {
-      //console.log(error)
+      console.log(error)
       return res.status(422).send({error: 'Unable to update the QRData'})
   }
 })

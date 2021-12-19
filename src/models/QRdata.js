@@ -9,7 +9,9 @@ const QRdataSchema = new mongoose.Schema({
     metadata:[{
         timestamp: String,
         latitude: String,
-        longitude: String
+        longitude: String,
+        location: String,
+        dataDescription : String
     }],
   
     
