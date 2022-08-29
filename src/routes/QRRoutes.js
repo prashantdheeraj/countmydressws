@@ -54,7 +54,7 @@ router.get('/device/:id', async (req,res) => {
   
 });
 
-// Gets the QRData by device ID
+// Gets the QRData by User ID
 router.get('/user/:id', async (req,res) => {
 
   const userId = req.params.id;
