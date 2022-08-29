@@ -52,7 +52,7 @@ router.post("/:id", async(req,res)=> {
     return res.send({createQRData});
   } catch (error) {
     console.log(error);
-    return res.status(422).send({error: 'Problem Creating new QR data'});
+    return res.status(422).send({error: 'Problem Creating new QR data from some'});
   }
 
 });
