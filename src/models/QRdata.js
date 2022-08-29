@@ -5,15 +5,29 @@ const QRdataSchema = new mongoose.Schema({
         type:String,
         required: true
     },
-    description:{type:String},   
-    metadata:[{
-        timestamp: String,
+    deviceId:{
+        type:String,
+        required: true
+    },
+    userId:{
+        type:String,
+    },
+    itemDescription:{
+        type:String,
+        required: true
+    }, 
+    deviceInfo:[{
+        deviceTimestamp: String,
+        deviceBrand: String,
+        deviceModel: String,
+        deviceManufacturer: String
+    }],   
+    scanData:[{
+        scanTimestamp: String,
         latitude: String,
         longitude: String,
-        location: String,
-        dataDescription : String
+        location: String
     }],
-  
     
 });
 

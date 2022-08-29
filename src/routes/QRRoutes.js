@@ -38,14 +38,46 @@ router.get('/:id', async (req,res) => {
     
 });
 
+// Gets the QRData by device ID
+router.get('/device/:id', async (req,res) => {
+
+  const deviceId = req.params.id;
+  //console.log(uuid)
+  try {
+      const data = await QRdata.find({deviceId: deviceId}).exec()
+      //console.log(data)
+      return res.send({data});
+    } catch (error) {
+      //console.log(`Error in fetching blog details : ${error}`);
+      return res.status(422).send({error: 'Problem Fetching the QRData'});
+    }
+  
+});
+
+// Gets the QRData by device ID
+router.get('/user/:id', async (req,res) => {
+
+  const userId = req.params.id;
+  //console.log(uuid)
+  try {
+      const data = await QRdata.find({userId: userId}).exec()
+      //console.log(data)
+      return res.send({data});
+    } catch (error) {
+      //console.log(`Error in fetching blog details : ${error}`);
+      return res.status(422).send({error: 'Problem Fetching the QRData'});
+    }
+  
+});
+
 
 
 
 // Creates a blog
 router.post("/:id", async(req,res)=> {
 
-  const {uuid, description,metadata} = req.body;
-  let newQRdata = {uuid,description,metadata};
+  const {uuid, deviceId, userId, itemDescription,deviceInfo, scanData} = req.body;
+  let newQRdata = {uuid,deviceId,userId,itemDescription,deviceInfo,scanData};
   //console.log(newQRdata)
   try {
     let createQRData = await QRdata.create(newQRdata);
@@ -63,12 +95,12 @@ router.post("/:id", async(req,res)=> {
 router.put("/:id", async (req,res) => {
 
   let uuid =  req.params.id; //This is blog Id to be updaated
-  const {description,metadata} = req.body; // For updating the blog title and body by the user
+  const {itemDescription,deviceInfo, scanData} = req.body; // For updating the blog title and body by the user
  
   try {
     
     const filter = { uuid: uuid };
-    const update = { description,metadata}; 
+    const update = { itemDescription,deviceInfo, scanData}; 
      
     // check if the blog belongs to the user and then only allow to delete
     let QRdataforUuid = await  QRdata.findOneAndUpdate(filter, update)
