@@ -16,6 +16,10 @@ const QRdataSchema = new mongoose.Schema({
         type:String,
         required: true
     }, 
+    itemCategory:{
+        type:String,
+        required: true
+    },
     deviceInfo:[{
         deviceTimestamp: String,
         deviceBrand: String,
