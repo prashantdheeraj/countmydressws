@@ -114,4 +114,15 @@ router.put("/:id", async (req,res) => {
   }
 })
 
+router.delete("/:id", async(req,res)=> {
+  try {
+    let uuid =  req.params.id; //This is blog Id to be updaated
+    const filter = { uuid: uuid };
+    let result = await QRdata.deleteOne(filter)
+  } catch (error) {
+      console.log(error)
+      return res.status(422).send({error: 'Unable to delete the QRData'})
+  }
+})
+
 module.exports = router;
